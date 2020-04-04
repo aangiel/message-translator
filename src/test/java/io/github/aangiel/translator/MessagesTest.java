@@ -1,14 +1,14 @@
 package io.github.aangiel.translator;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class MessagesTest {
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void beforeClass() {
         MessageTranslator.setLanguage(Languages.EN);
         MessageTranslator.setAnyMessage(Messages.EMPTY_EQUATION);
     }
