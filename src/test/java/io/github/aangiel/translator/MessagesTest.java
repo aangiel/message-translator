@@ -38,10 +38,10 @@ public class MessagesTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void noLanguage() {
-        var message1 = MessageTranslator.getMessage("de", "DIFFERENT");
-        var message2 = MessageTranslator.getMessage("de", "EMPTY_EQUATION");
-        var message3 = MessageTranslator.getMessage("de", "LEFT_ON_STACK");
-        var message4 = MessageTranslator.getMessage("de", "UNSUPPORTED_TYPE");
+        String message1 = MessageTranslator.getMessage("de", "DIFFERENT");
+        String message2 = MessageTranslator.getMessage("de", "EMPTY_EQUATION");
+        String message3 = MessageTranslator.getMessage("de", "LEFT_ON_STACK");
+        String message4 = MessageTranslator.getMessage("de", "UNSUPPORTED_TYPE");
         System.out.println(String.join(",", message1, message2, message3, message4));
     }
 

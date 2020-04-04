@@ -2,6 +2,7 @@ package io.github.aangiel.translator;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -65,7 +66,8 @@ final class MessagesSupplier {
         // It always works, because MessageTranslator.getLanguage()
         // returns Enum<? extends Language>
         @SuppressWarnings("unchecked")
-        var result = (Enum<? extends Language>) valueOf(name, MessageTranslator.getLanguage().getDeclaringClass());
+        Enum<? extends Language> result = (Enum<? extends Language>)
+                valueOf(name, MessageTranslator.getLanguage().getDeclaringClass());
         return result;
     }
 
@@ -73,14 +75,15 @@ final class MessagesSupplier {
         // It always works, because MessageTranslator.getAnyMessage()
         // returns Enum<? extends MessageTranslator>
         @SuppressWarnings("unchecked")
-        var result = (Enum<? extends MessageTranslator>) valueOf(name, MessageTranslator.getAnyMessage().getDeclaringClass());
+        Enum<? extends MessageTranslator> result = (Enum<? extends MessageTranslator>)
+                valueOf(name, MessageTranslator.getAnyMessage().getDeclaringClass());
         return result;
     }
 
     private static Enum<?> valueOf(String name, Class<?> clazz) {
         Enum<?> result = null;
         try {
-            var valueOf = clazz.getMethod("valueOf", String.class);
+            Method valueOf = clazz.getMethod("valueOf", String.class);
             result = (Enum<?>) valueOf.invoke(null, name.toUpperCase());
         } catch (InvocationTargetException e) {
             if (e.getTargetException() instanceof IllegalArgumentException)

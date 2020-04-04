@@ -9,7 +9,7 @@ public interface MessageTranslator {
         // It always works IF this interface is implemented by enum,
         // because it's projected to be implemented only by enums.
         @SuppressWarnings("unchecked")
-        var key = (Enum<? extends MessageTranslator>) this;
+        Enum<? extends MessageTranslator> key = (Enum<? extends MessageTranslator>) this;
         return getMessage(key);
     }
 
@@ -56,11 +56,11 @@ public interface MessageTranslator {
     static String getMessage(Enum<? extends Language> language, Enum<? extends MessageTranslator> key) {
         Objects.requireNonNull(key);
 
-        var properties = getMessages().get(language);
+        Map<Enum<? extends MessageTranslator>, String> properties = getMessages().get(language);
         if (properties == null)
             throw new IllegalArgumentException("No translation file for given language");
 
-        var result = properties.get(key);
+        String result = properties.get(key);
         if (result == null)
             throw new IllegalArgumentException("No message for key");
 

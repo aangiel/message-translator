@@ -10,10 +10,10 @@
 
     <groupId>io.github.aangiel</groupId>
     <artifactId>message-translator</artifactId>
-    <version>0.9.0-SNAPSHOT</version>
+    <version>0.9.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
-        <jdk.version>11</jdk.version>
+        <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>4.13</junit.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
